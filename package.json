@@ -1,9 +1,10 @@
 {
   "name": "jeux-de-mots",
   "version": "0.0.0",
+  "main": "app.js",
   "scripts": {
     "ng": "ng",
-    "start": "npm start",
+    "start": "ng serve",
     "build": "ng build",
     "postinstall": "ng build --aot --prod",
     "test": "ng test",
@@ -16,12 +17,12 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/cli": "~7.0.6",
+    "@angular/common": "~7.0.0",
+    "@angular/compiler-cli": "~7.0.0",
     "@angular/animations": "^7.0.4",
     "@angular/cdk": "^7.2.1",
-    "@angular/common": "~7.0.0",
     "@angular/compiler": "~7.0.0",
-    "@angular/cli": "~7.0.6",
-    "@angular/compiler-cli": "~7.0.0",
     "@angular/core": "~7.0.0",
     "@angular/forms": "~7.0.0",
     "@angular/http": "~7.0.0",
@@ -30,6 +31,7 @@
     "@angular/platform-browser-dynamic": "~7.0.0",
     "@angular/router": "~7.0.0",
     "core-js": "^2.5.4",
+    "express": "^4.16.4",
     "rxjs": "~6.3.3",
     "rxjs-compat": "^6.3.3",
     "zone.js": "~0.8.26"
