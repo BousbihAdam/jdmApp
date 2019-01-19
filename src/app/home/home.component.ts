@@ -15,7 +15,7 @@ export class HomeComponent {
   title = 'JeuxDeMots';
   data: any[];
   rtid: any[];
-  private terme: String;
+  terme: String;
   elementToDisplay: String ;
   element ="both";
   
