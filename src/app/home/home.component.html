@@ -1,0 +1,92 @@
+<!--bootstrap cdn -->
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<!-- Load icon library -->
+<div style="text-align:center">
+  <h1>
+     {{ title }}
+  </h1>
+  <div class="search">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Tapez le terme à trouver" aria-describedby="basic-addon2"   [(ngModel)]="terme">
+      <div class="input-group-append">
+        <form role="form" (submit)="onClickSubmit()" >
+            <button class="btn btn-outline-secondary" type="submit">Rechercher</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="myBtnContainer">
+      <button id="showAll" class="btn" (click)="myEvent($event)">Tout Afficher</button>
+       <div  *ngFor="let data of data " > 
+           <div *ngFor="let rtid of rtid" class="btn-group"> 
+               <button id={{data.relations[rtid].trname}} class="btn"  (click)="myEvent($event)"> {{data.relations[rtid].trname}}</button>
+           </div>
+       </div>
+    </div>
+   
+ 
+    <div id="myBtnContainer" class="btn-group">
+        <button style="margin:2%" id="definition" class="btn" (click)="myEvent($event)">Définition</button>
+        <button style="margin:2%" id="both" class="btn" (click)="relationEvent($event)">Relations Entrantes & Sortantes</button>
+        <button style="margin:2%" id="incoming" class="btn" (click)="relationEvent($event)">Relations Entrantes</button>
+        <button style="margin:2%" id="outgoing" class="btn" (click)="relationEvent($event)">Relations Sortantes</button>
+      </div> 
+
+
+  <!--<div *ngIf="data!=undefined" > 
+  -->
+    
+    <div  *ngFor="let data of data " > 
+
+    <div class="myTable" *ngIf="elementToDisplay === 'definition' || elementToDisplay === 'showAll'" >
+        <table class="table table-bordered">
+          <thead class="thead-light">
+            <tr>
+              <th colspan="2"> Definition </th>
+            </tr>
+          </thead>
+          <tbody class="tbody">
+            <tr>
+              <td><div *ngIf="data.definitions.length < 8"><b> Aucune définition trouvée</b></div>
+                <div *ngIf="data.definitions.length > 8"> {{data.definitions}}</div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+        <div *ngFor="let rtid of rtid " > 
+          <div class="myTable" *ngIf="elementToDisplay === data.relations[rtid].trname || elementToDisplay ===  'showAll'">
+              <table class="table table-bordered">
+                <thead class="thead-light">
+                  <tr>
+                    <th colspan="2">{{data.relations[rtid].trname}}   <button  id="{{data.relations[rtid].rthelp}}" mat-raised-button (click)="openDialog($event)">Info sur la relation </button></th>
+                  </tr>
+                </thead>
+                <tbody class="tbody">
+                  <tr>
+                    <div *ngIf="element === 'incoming' || element ===  'both' " > 
+                      <td><div *ngIf="data.relations[rtid].incoming.length < 5"><b> Aucune relations entrantes</b></div> 
+                        <div *ngIf="data.relations[rtid].incoming.length > 5">    <b>Relations Entrantes : </b><p [innerHTML]="data.relations[rtid].incoming"></p></div></td>
+                    </div>
+                    <div *ngIf="element ==='outgoing' || element ===  'both'  " > 
+                      <td><div *ngIf="data.relations[rtid].outgoing.length < 5"><b> Aucune relations entrantes</b></div>
+                        <div *ngIf="data.relations[rtid].outgoing.length > 5"><b>Relations Sortantes : </b><p [innerHTML]="data.relations[rtid].outgoing"></p></div></td>
+                    </div>
+                  </tr>
+                </tbody>
+              </table>
+        
+          </div>
+          </div>
+  </div>
+
+
+
+
+</div>
+ 
+ 
+
