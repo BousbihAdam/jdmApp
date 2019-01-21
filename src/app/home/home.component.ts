@@ -50,7 +50,7 @@ export class HomeComponent {
     }
     ngOnInit() {
   
-
+      this.spinner.show();
       let url = this.route.snapshot.paramMap.get("word");
       console.log("this is the url");
       console.log(url);
@@ -64,6 +64,7 @@ export class HomeComponent {
           console.log(this.data);  
           this.rtid = Object.keys(resp.relations);
           console.log(this.rtid);
+           this.spinner.hide();
       });
     }
   }
