@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { JdmService } from '../../services/jdm.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 export interface DialogData {
   description: string;
 }
@@ -20,7 +21,7 @@ export class HomeComponent {
   element ="both";
   
   constructor(private jdmService: JdmService,public dialog: MatDialog,
-    private route: ActivatedRoute) {}
+    private route: ActivatedRoute,private spinner: NgxSpinnerService) {}
    myEvent(event) {
     this.elementToDisplay = event.target.id;
     console.log(event.target.id);
@@ -31,6 +32,12 @@ export class HomeComponent {
   }  
   onClickSubmit() {  
     console.log(this.terme);
+    this.spinner.show();
+ 
+   // setTimeout(() => {
+        /** spinner ends after 5 seconds */
+      
+   // }, 5000);
       this.jdmService.getResult(this.terme).subscribe(resp => {
           console.log("lebbeeeees : ");
           this.data = Array.of(resp);
@@ -38,10 +45,12 @@ export class HomeComponent {
           console.log(this.data);  
           this.rtid = Object.keys(resp.relations);
           console.log(this.rtid);
+          this.spinner.hide();
       });
     }
     ngOnInit() {
-    
+  
+
       let url = this.route.snapshot.paramMap.get("word");
       console.log("this is the url");
       console.log(url);

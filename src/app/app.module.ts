@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent, relationPopUp } from './home/home.component';
@@ -16,7 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     relationPopUp
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,NgxSpinnerModule,
     FormsModule,HttpModule,
     AppRoutingModule,
     MatDialogModule,BrowserAnimationsModule,
