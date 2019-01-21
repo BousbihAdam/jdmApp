@@ -278,6 +278,9 @@ MIT
 @angular/forms
 MIT
 
+ngx-spinner
+MIT
+
 rxjs-compat
 Apache-2.0
                                Apache License
