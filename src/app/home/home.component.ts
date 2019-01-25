@@ -55,7 +55,9 @@ export class HomeComponent {
       console.log("this is the url");
       console.log(url);
       //let id = +this.route.snapshot.params['id'];
-    
+      if(url == undefined || url == null){
+        this.spinner.hide();
+      }
       if(url != undefined && url != null){
         this.jdmService.getResult(url).subscribe(resp => {
           console.log("lebbeeeees : ");
